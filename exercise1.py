@@ -14,13 +14,12 @@ __license__ = "MIT License"
 
 def pig_latinify(word):
     """
-    Describe your function
-
-    :param :
-    :return:
-    :raises:
-
+    Takes in a string argument and returns it in Pig-Latin
+    If the entered string begins with a vowel, append 'yay' to the end of the string
+    Otherwise, move all letters up till the first vowel from the entered string to the back and append 'ay' to the end
     """
     result = ""
+    word = raw_input("enter the word you wish to translate to Pig-Latin")
+    
 
     return result
