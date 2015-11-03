@@ -19,7 +19,19 @@ def pig_latinify(word):
     Otherwise, move all letters up till the first vowel from the entered string to the back and append 'ay' to the end
     """
     result = ""
-    word = raw_input("enter the word you wish to translate to Pig-Latin")
-    
 
+    word = word.lower()
+
+    if word.isalpha() == False:
+        return ("Please only enter alphabetic characters, and please enter at least one.")
+
+    elif word[0] in ("a","e","i","o","u"):
+        result = word + "yay"
+    else:
+        while word[0] not in ("a","e","i","o","u"):
+            word = word[1:] + word[0]
+            result = word + "ay"
     return result
+
+#pig_latinify("scram")
+
