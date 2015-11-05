@@ -56,17 +56,17 @@ def union(table1, table2):
         if tables t1 and t2 don't have the same attributes
     """
     table3 = table1
-    i = 1
+    j = 1
     if schema(table1,table2):
-        while i < len(table2):
-            if table2[i] not in table1:
-                table3 = table3 + table2[i]
-            i += 1
+        while j < len(table2):
+            if table2[j] not in table1:
+                table3 = table3 + table2[j]
+            j += 1
 
     return table3
 
 # test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
-# test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
+# test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
 #union(test1, test2)
 
 def intersection(table1, table2):
@@ -74,6 +74,20 @@ def intersection(table1, table2):
     Describe your function
 
     """
+    table3 = [table1[0]]
+    i = 1
+    j = 1
+
+    if schema(table1,table2):
+        while i < len(table1):
+            while j < len(table2):
+                if table1[i] == table2[j]:
+                    table3 = table3 + table2[j]
+                    j += 1
+                else:
+                    j += 1
+            i += 1
+
     return []
 
 
