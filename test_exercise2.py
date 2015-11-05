@@ -48,6 +48,6 @@ def test_multi_find_more():
 
     assert multi_find("Ni! Ni! Ni! Ni!", "Ni!", 2, 19) == "4,8,12"
     assert multi_find("Ni! nI! ni! NI!", "Ni!", 0, 15) == "12"
-    assert multi_find("Ni! Ni! Ni!!! Ni!", "Ni", 0, -1) == "0,4,8,12"
-    assert multi_find("Ni! Ni! Ni! Ni!!", "Ni", 9, -9) == ""
-    assert multi_find("Ni! N!! N i! Ni!", "Ni", 0, 15) == ""
+    assert multi_find("Ni!!!!! Ni! Ni! Ni!", "Ni", 0, -1) == "0,8,12"
+    assert multi_find("Ni ! Ni! Ni! Ni!!", "Ni", 9, -9) == ""
+    assert multi_find("Ni!  N!! Ni!Ni!", "Ni", 0, 15) == ""

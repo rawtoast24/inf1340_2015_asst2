@@ -23,7 +23,7 @@ def pig_latinify(word):
     word = word.lower()
 
     if word.isalpha() == False:
-        return ("Please only enter alphabetic characters, and please enter at least one.")
+        return "Please only enter alphabetic characters, and please enter at least one."
 
     elif word[0] in ("a","e","i","o","u"):
         result = word + "yay"
@@ -33,5 +33,5 @@ def pig_latinify(word):
             result = word + "ay"
     return result
 
-#pig_latinify("scram")
+# pig_latinify("scram")
 
