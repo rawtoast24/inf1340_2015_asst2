@@ -22,3 +22,7 @@ def test_basic():
     assert pig_latinify("apple") == "appleyay"
     assert pig_latinify("9gag") == "Please only enter alphabetic characters, and please enter at least one."
     assert pig_latinify("") == "Please only enter alphabetic characters, and please enter at least one."
+    assert pig_latinify("zznrrr") == "zznrrray"
+    assert pig_latinify("ZLPRRR") == "ZLPRRRay"
+    assert pig_latinify("ZlRRp") == "ZlRRpay"
+    
