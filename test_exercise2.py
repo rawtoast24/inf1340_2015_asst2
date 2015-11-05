@@ -41,7 +41,7 @@ def test_find_more():
 
     assert find("This is an ex-parrot", "parrot", 0, 25) == 14
     assert find("This is an ex-parrot", "parrot", 16, -5) == -1
-    assert find("This is an 3x-parrot", "parrot", 0, 20) == -1
+    assert find("This is an 3x-parrot", "parrot", 0, 20) == 14
     assert find(" T his i s an par rot", "parrot", 0, 20) == -1
 
 
