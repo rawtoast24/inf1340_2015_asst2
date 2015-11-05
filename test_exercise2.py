@@ -28,3 +28,26 @@ def test_multi_find_basic():
     Test multi_find function.
     """
     assert multi_find("Ni! Ni! Ni! Ni!", "Ni", 0, 20) == "0,4,8,12"
+
+
+def test_find_more():
+    """
+    Establish other function to test more scenarios of find_basic
+    """
+
+    assert find("This is an ex-parrot", "parrot", 0, 25) == 14
+    assert find("This is an ex-parrot", "parrot", 16, -5) == -1
+    assert find("This is an 3x-parrot", "parrot", 0, 20) == -1
+    assert find(" T his i s an par rot", "parrot", 0, 20) == -1
+
+
+def test_multi_find_more():
+    """
+    Establish other function to test more scenarios of find_multi
+    """
+
+    assert multi_find("Ni! Ni! Ni! Ni!", "Ni!", 2, 19) == "4,8,12"
+    assert multi_find("Ni! nI! ni! NI!", "Ni!", 0, 15) == "12"
+    assert multi_find("Ni! Ni! Ni!!! Ni!", "Ni", 0, -1) == "0,4,8,12"
+    assert multi_find("Ni! Ni! Ni! Ni!!", "Ni", 9, -9) == ""
+    assert multi_find("Ni! N!! N i! Ni!", "Ni", 0, 15) == ""
