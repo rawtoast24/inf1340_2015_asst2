@@ -21,7 +21,11 @@ def test_find_basic():
     Test find function.
     """
     assert find("This is an ex-parrot", "parrot", 0, 20) == 14
+    assert find("This is an ex-parrot", "flamingo",0,20) == -1
 
+def test_find_out_of_string():
+    assert find("This is an ex-parrot", "parrot", 21, 20) == -1
+    assert find("This is an ex-parrot", "parrot", 0, 25) == 14
 
 def test_multi_find_basic():
     """
@@ -37,7 +41,7 @@ def test_find_more():
 
     assert find("This is an ex-parrot", "parrot", 0, 25) == 14
     assert find("This is an ex-parrot", "parrot", 16, -5) == -1
-    assert find("This is an 3x-parrot", "parrot", 0, 20) == -1
+    assert find("This is an 3x-parrot", "parrot", 0, 20) == 14
     assert find(" T his i s an par rot", "parrot", 0, 20) == -1
 
 
@@ -47,7 +51,7 @@ def test_multi_find_more():
     """
 
     assert multi_find("Ni! Ni! Ni! Ni!", "Ni!", 2, 19) == "4,8,12"
-    assert multi_find("Ni! nI! ni! NI!", "Ni!", 0, 15) == "12"
-    assert multi_find("Ni!!!!! Ni! Ni! Ni!", "Ni", 0, -1) == "0,8,12"
+    assert multi_find("Ni! nI! ni! NI!", "Ni!", 0, 15) == "0,4,8,12"
+    assert multi_find("Ni!!!!! Ni! Ni! Ni!", "Ni", 0, -1) == ""
     assert multi_find("Ni ! Ni! Ni! Ni!!", "Ni", 9, -9) == ""
-    assert multi_find("Ni!  N!! Ni!Ni!", "Ni", 0, 15) == ""
+    assert multi_find("Ni!  N!! Ni!Ni!", "Ni", 0, 15) == "0,9,12"
