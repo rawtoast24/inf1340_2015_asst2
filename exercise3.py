@@ -13,58 +13,84 @@ __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
 
-def union(table1, table2):
-    """
-    Perform the union set operation on tables, table1 and table2.
-
-    :param table1: a table (a List of Lists)
-    :param table2: a table (a List of Lists)
-    :return: the resulting table
-    :raises: MismatchedAttributesException:
-        if tables t1 and t2 don't have the same attributes
-    """
-    return []
+def schema(table1, table2):
+    table_header_1 = table1[0]
+    table_header_2 = table2[0]
 
 
-def intersection(table1, table2):
-    """
-    Describe your function
+    length_1 = len(table_header_1)
+    length_2 = len(table_header_2)
 
-    """
-    return []
+    if length_1 == length_2:
+        result_1 = True
 
+    if table_header_1 == table_header_2:
+        result_2 = True
 
-def difference(table1, table2):
-    """
-    Describe your function
+    if result_1 == True and result_2 == True:
+        schema_result = True
 
-    """
-    return []
+    return schema_result
 
-
-#####################
-# HELPER FUNCTIONS ##
-#####################
-def remove_duplicates(l):
-    """
-    Removes duplicates from l, where l is a List of Lists.
-    :param l: a List
-    """
-
-    d = {}
-    result = []
-    for row in l:
-        if tuple(row) not in d:
-            result.append(row)
-            d[tuple(row)] = True
-
-    return result
+test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"]]
+test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
+print schema(test1, test2)
 
 
-class MismatchedAttributesException(Exception):
-    """
-    Raised when attempting set operations with tables that
-    don't have the same attributes.
-    """
-    pass
-
+# def union(table1, table2):
+#     """
+#     Perform the union set operation on tables, table1 and table2.
+#
+#     :param table1: a table (a List of Lists)
+#     :param table2: a table (a List of Lists)
+#     :return: the resulting table
+#     :raises: MismatchedAttributesException:
+#         if tables t1 and t2 don't have the same attributes
+#     """
+#
+#
+#     return []
+#
+#
+# def intersection(table1, table2):
+#     """
+#     Describe your function
+#
+#     """
+#     return []
+#
+#
+# def difference(table1, table2):
+#     """
+#     Describe your function
+#
+#     """
+#     return []
+#
+#
+# #####################
+# # HELPER FUNCTIONS ##
+# #####################
+# def remove_duplicates(l):
+#     """
+#     Removes duplicates from l, where l is a List of Lists.
+#     :param l: a List
+#     """
+#
+#     d = {}
+#     result = []
+#     for row in l:
+#         if tuple(row) not in d:
+#             result.append(row)
+#             d[tuple(row)] = True
+#
+#     return result
+#
+#
+# class MismatchedAttributesException(Exception):
+#     """
+#     Raised when attempting set operations with tables that
+#     don't have the same attributes.
+#     """
+#     pass
+#
