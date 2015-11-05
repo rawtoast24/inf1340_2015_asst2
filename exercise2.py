@@ -37,7 +37,8 @@ def find(input_string, substring, start, end):
             i += 1
     return -1
 
-#find("This is an ex-parrot", "parrot", 0, 20)
+# find ("This is an ex-parrot", "parrot", 0, 20)
+
 
 def multi_find(input_string, substring, start, end):
     """
