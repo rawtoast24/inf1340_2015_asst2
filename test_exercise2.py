@@ -23,9 +23,11 @@ def test_find_basic():
     assert find("This is an ex-parrot", "parrot", 0, 20) == 14
     assert find("This is an ex-parrot", "flamingo",0,20) == -1
 
+
 def test_find_out_of_string():
     assert find("This is an ex-parrot", "parrot", 21, 20) == -1
     assert find("This is an ex-parrot", "parrot", 0, 25) == 14
+
 
 def test_multi_find_basic():
     """

@@ -14,6 +14,11 @@ __license__ = "MIT License"
 
 
 def schema(table1, table2):
+    """
+    Created a function to determine first whether the schemas for table 1 and table 2 were the same. It compares
+    the length of the first row of both tables and the content of the first row of both tables. 
+    """
+
     table_header_1 = table1[0]
     table_header_2 = table2[0]
 
