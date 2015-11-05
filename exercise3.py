@@ -42,7 +42,7 @@ def schema(table1, table2):
 
 # test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"]]
 # test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-schema(test1, test2)
+#schema(test1, test2)
 
 
 def union(table1, table2):
@@ -67,9 +67,7 @@ def union(table1, table2):
 
 # test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
 # test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-
-union(test1, test2)
-
+#union(test1, test2)
 
 def intersection(table1, table2):
     """
