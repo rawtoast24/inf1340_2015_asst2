@@ -21,7 +21,9 @@ def schema(table1, table2):
 
     table_header_1 = table1[0]
     table_header_2 = table2[0]
-
+    result_1 = False
+    result_2 = False
+    schema_result = False
 
     length_1 = len(table_header_1)
     length_2 = len(table_header_2)
