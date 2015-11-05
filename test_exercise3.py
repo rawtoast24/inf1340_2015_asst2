@@ -40,7 +40,8 @@ def is_equal(t1, t2):
 ###################
 def test_union():
     """
-    Test union operation.
+    Test union operation. If both tables have the same schema the function will return a new table that contains all
+    unique rows that appear in either table.
     """
 
     result = [["Number", "Surname", "Age"],
@@ -54,7 +55,8 @@ def test_union():
 
 def test_intersection():
     """
-    Test intersection operation.
+    Test intersection operation. If both tables are the same, function should return a new table
+     that contains all the unique rows that appear in both tables.
     """
     result = [["Number", "Surname", "Age"],
               [7432, "O'Malley", 39],
@@ -65,7 +67,8 @@ def test_intersection():
 
 def test_difference():
     """
-    Test difference operation.
+    Test difference operation. After its been determined that the schema of both tables is the same the
+    function will return a new table that holds all unique rows that appear in the first table but not the second.
     """
 
     result = [["Number", "Surname", "Age"],
