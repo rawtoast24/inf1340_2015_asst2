@@ -48,7 +48,7 @@ def schema(table1, table2):
 def union(table1, table2):
     """
     Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
-    established to represent the unique rows that appear in table 1 and table 2.
+    established to represent the unique rows that appear in either table 1 and table 2.
 
     :param table1: a table (a List of Lists)
     :param table2: a table (a List of Lists)
