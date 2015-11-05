@@ -40,65 +40,76 @@ def schema(table1, table2):
 
     return schema_result
 
-test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"]]
-test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-print schema(test1, test2)
+# test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"]]
+# test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
+schema(test1, test2)
 
 
-# def union(table1, table2):
-#     """
-#     Perform the union set operation on tables, table1 and table2.
-#
-#     :param table1: a table (a List of Lists)
-#     :param table2: a table (a List of Lists)
-#     :return: the resulting table
-#     :raises: MismatchedAttributesException:
-#         if tables t1 and t2 don't have the same attributes
-#     """
-#
-#
-#     return []
-#
-#
-# def intersection(table1, table2):
-#     """
-#     Describe your function
-#
-#     """
-#     return []
-#
-#
-# def difference(table1, table2):
-#     """
-#     Describe your function
-#
-#     """
-#     return []
-#
-#
-# #####################
-# # HELPER FUNCTIONS ##
-# #####################
-# def remove_duplicates(l):
-#     """
-#     Removes duplicates from l, where l is a List of Lists.
-#     :param l: a List
-#     """
-#
-#     d = {}
-#     result = []
-#     for row in l:
-#         if tuple(row) not in d:
-#             result.append(row)
-#             d[tuple(row)] = True
-#
-#     return result
-#
-#
-# class MismatchedAttributesException(Exception):
-#     """
-#     Raised when attempting set operations with tables that
-#     don't have the same attributes.
-#     """
-#     pass
-#
+def union(table1, table2):
+    """
+    Perform the union set operation on tables, table1 and table2.
+
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: the resulting table
+    :raises: MismatchedAttributesException:
+        if tables t1 and t2 don't have the same attributes
+    """
+    table3 = table1
+    i = 1
+    if schema(table1,table2):
+        while i < len(table2):
+            if table2[i] not in table1:
+                table3 = table3 + table2[i]
+            i += 1
+
+    return table3
+
+# test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
+# test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
+
+union(test1, test2)
+
+
+def intersection(table1, table2):
+    """
+    Describe your function
+
+    """
+    return []
+
+
+def difference(table1, table2):
+    """
+    Describe your function
+
+    """
+    return []
+
+
+#####################
+# HELPER FUNCTIONS ##
+#####################
+def remove_duplicates(l):
+    """
+    Removes duplicates from l, where l is a List of Lists.
+    :param l: a List
+    """
+
+    d = {}
+    result = []
+    for row in l:
+        if tuple(row) not in d:
+            result.append(row)
+            d[tuple(row)] = True
+
+    return result
+
+
+class MismatchedAttributesException(Exception):
+    """
+    Raised when attempting set operations with tables that
+    don't have the same attributes.
+    """
+    pass
+
