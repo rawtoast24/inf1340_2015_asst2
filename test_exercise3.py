@@ -30,6 +30,19 @@ MANAGERS = [["Number", "Surname", "Age"],
             [9824, "Darkes", 38]]
 
 
+STUDENTS = [["Name", "Age", "School"],
+            ["Chris", 13, "Hillcrest"],
+            ["Sandra", 15, "Markham"],
+            ["Michelle", 10, "Parkdale"]]
+
+ACTORS = [["Name", "Age", "School"],
+          ["Chris", 13, "Hillcrest"],
+          ["Maggie", 11, "Hillcrest"],
+          ["Sharon", 16, "Markham"],
+          ["Sandra", 15, "Markham"],
+          ["Mark", 14, "Markham"],
+          ["James", 15, "Parkdale"]]
+
 #####################
 # HELPER FUNCTIONS ##
 #####################
@@ -51,6 +64,11 @@ def test_intersection():
 
     assert is_equal(result, intersection(GRADUATES, MANAGERS))
 
+    result = [["Name", "Age", "School"],
+              ["Chris", 13, "Hillcrest"],
+              ["Sandra", 15, "Markham"]]
+    assert is_equal(result, intersection(STUDENTS, ACTORS))
+
 
 def test_union():
     """
@@ -66,6 +84,17 @@ def test_union():
 
     assert is_equal(result, union(GRADUATES, MANAGERS))
 
+    result = [["Name", "Age", "School"],
+              ["Chris", 13, "Hillcrest"],
+              ["Sandra", 15, "Markham"],
+              ["Michelle", 10, "Parkdale"],
+              ["Maggie", 11, "Hillcrest"],
+              ["Sharon", 16, "Markham"],
+              ["Mark", 14, "Markham"],
+              ["James", 15, "Parkdale"]]
+
+    assert is_equal(result, union(STUDENTS, ACTORS))
+
 
 def test_difference():
     """
@@ -77,3 +106,15 @@ def test_difference():
               [7274, "Robinson", 37]]
 
     assert is_equal(result, difference(GRADUATES, MANAGERS))
+
+    result = [["Name", "Age", "School"],
+              ["Michelle", 10, "Parkdale"]]
+
+    assert is_equal(result, difference(STUDENTS, ACTORS))
+    
+
+def test_schemas():
+    """
+    Established a function to test whether the schemas of both tables are the same. If they are not the program
+    raises a MismatchedAttributesException error.
+    """
