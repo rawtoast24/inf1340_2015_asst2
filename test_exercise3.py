@@ -39,9 +39,17 @@ ACTORS = [["Number", "Surname", "Age"],
           [7302, "Markham", 34],
           [8776, "Shingle", 52]]
 
+BEATLES = [["Name", "Instrument"],
+           ["John", "Guitar"],
+           ["Paul", "Bass"],
+           ["George", "Guitar"],
+           ["Ringo", "Drums"]]
+
 #####################
 # HELPER FUNCTIONS ##
 #####################
+
+
 def is_equal(t1, t2):
     return sorted(t1) == sorted(t2)
 
@@ -49,6 +57,8 @@ def is_equal(t1, t2):
 ###################
 # TEST FUNCTIONS ##
 ###################
+
+
 def test_intersection():
     """
     Test intersection operation. If both tables are the same, function should return a new table
@@ -70,6 +80,7 @@ def test_intersection():
     result = None
 
     assert is_equal(result, intersection(GRADUATES, ACTORS))
+
 
 def test_union():
     """
@@ -125,6 +136,7 @@ def test_difference():
               [9824, "Darkes", 38]]
 
     assert is_equal(result, difference(GRADUATES, ACTORS))
+
 
 def test_schemas():
     """
