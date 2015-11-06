@@ -41,10 +41,17 @@ GRADUATES = [["Number", "Surname", "Age"],
 #             [7432, "O'Malley", 39, 555-5554],
 #             [9824, "Darkes"]]
 
-ACTORS = [["Number", "Surname", "Age"],
-          [5400, "Bernard", 40],
-          [7302, "Markham", 34],
-          [8776, "Shingle", 52]]
+# ACTORS = [["Number", "Surname", "Age"],
+#           [5400, "Bernard", 40],
+#           [7302, "Markham", 34],
+#           [8776, "Shingle", 52]]
+
+BEATLES = [["Name", "Instrument"],
+           ["John", "Guitar"],
+           ["Paul", "Bass"],
+           ["George", "Guitar"],
+           ["Ringo", "Drums"]]
+
 
 class MismatchedAttributesException(Exception):
     """
@@ -85,7 +92,9 @@ def intersection(table1, table2):
         table3 = []
     return table3
 
-print intersection(GRADUATES,ACTORS)
+# print intersection(GRADUATES, BEATLES)
+
+
 def union(table1, table2):
     """
     Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
@@ -100,7 +109,7 @@ def union(table1, table2):
     table3 = []
     j = 1
     if table1[0] != table2[0]:
-        return MismatchedAttributesException
+        raise MismatchedAttributesException
     else:
         for i in range(0, len(table1)):
             table3.append(table1[i])
@@ -124,7 +133,7 @@ def difference(table1, table2):
     """
 
     if table1[0] != table2[0]:
-        return MismatchedAttributesException
+        raise MismatchedAttributesException
     else:
         table3 = [table1[0]]
         i = 1

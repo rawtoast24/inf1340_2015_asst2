@@ -62,7 +62,7 @@ def is_equal(t1, t2):
 def test_intersection():
     """
     Test intersection operation. If both tables are the same, function should return a new table
-     that contains all the unique rows that appear in both tables.
+    that contains all the unique rows that appear in both tables.
     """
     result = [["Number", "Surname", "Age"],
               [7432, "O'Malley", 39],
@@ -143,3 +143,5 @@ def test_schemas():
     Established a function to test whether the schemas of both tables are the same. If they are not the program
     raises a MismatchedAttributesException error.
     """
+    with pytest.raises(Exception):
+        union(GRADUATES,BEATLES)
