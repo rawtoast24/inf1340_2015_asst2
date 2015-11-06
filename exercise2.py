@@ -25,7 +25,6 @@ def find(input_string, substring, start, end):
     substring = substring.lower()
 
     # Create initial variables
-    result = 0
     i = start
 
     # Check to see if the substring is within the spliced string
@@ -36,8 +35,6 @@ def find(input_string, substring, start, end):
         else:
             i += 1
     return -1
-
-# find("This is an ex-parrot", "parrot", 0, 25)
 
 
 def multi_find(input_string, substring, start, end):
@@ -65,6 +62,3 @@ def multi_find(input_string, substring, start, end):
 
     result = result[0:len(result)-1]
     return result
-
-# multi_find("Ni!  N!! Ni!Ni!", "Ni", 0, 15)
-

@@ -19,21 +19,18 @@ def pig_latinify(word):
     Otherwise, move all letters up till the first vowel from the entered string to the back and append 'ay' to the end
     """
     result = ""
-    vowels = ("a","e","i","o","u")
+    vowels = ("a", "e", "i", "o", "u")
     word = word.lower()
 
-    if word.isalpha() == False:
+    if not word.isalpha():
         return "Please only enter alphabetic characters, and please enter at least one."
 
     elif word[0] in vowels:
         result = word + "yay"
-    elif any(chars in vowels for chars in word) == False:
+    elif not any(chars in vowels for chars in word):
         result = word + "ay"
     else:
         while word[0] not in vowels:
             word = word[1:] + word[0]
             result = word + "ay"
     return result
-
-print pig_latinify("why")
-

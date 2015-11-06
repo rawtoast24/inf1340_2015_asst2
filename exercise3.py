@@ -76,7 +76,7 @@ def intersection(table1, table2):
     i = 0
     j = 0
     if table1[0] != table2[0]:
-        raise MismatchedAttributesException
+        raise Exception("MismatchedAttributesException")
     else:
         while i < len(table1):
             while j < len(table2):
@@ -109,7 +109,7 @@ def union(table1, table2):
     table3 = []
     j = 1
     if table1[0] != table2[0]:
-        raise MismatchedAttributesException
+        raise Exception("MismatchedAttributesException")
     else:
         for i in range(0, len(table1)):
             table3.append(table1[i])
@@ -133,7 +133,7 @@ def difference(table1, table2):
     """
 
     if table1[0] != table2[0]:
-        raise MismatchedAttributesException
+        raise Exception("MismatchedAttributesException")
     else:
         table3 = [table1[0]]
         i = 1
