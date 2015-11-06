@@ -52,16 +52,15 @@ def union(table1, table2):
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    table3 = table1
+    table3 = []
     j = 1
-    if schema(table1, table2):
-        try:
-            while j < len(table2):
-                if table2[j] not in table1:
-                    table3.append(table2[j])
+    if table1[0] == table2[0]:
+        table3 = table1
+        while j < len(table2):
+            if table2[j] not in table1:
+                table3.append(table2[j])
                 j += 1
-        except AttributeError:
-            raise MismatchedAttributesException
+            j += 1
     return table3
 
 
@@ -74,7 +73,7 @@ def intersection(table1, table2):
     i = 0
     j = 0
 
-    if schema(table1, table2):
+    if table1[0] == table2[0]:
         try:
             while i < len(table1):
                 while j < len(table2):
@@ -125,7 +124,7 @@ MANAGERS = [["Number", "Surname", "Age"],
             [9297, "O'Malley", 56],
             [7432, "O'Malley", 39],
             [9824, "Darkes", 38]]
-print difference(GRADUATES, MANAGERS)
+print union(GRADUATES, MANAGERS)
 
 #####################
 # HELPER FUNCTIONS ##
