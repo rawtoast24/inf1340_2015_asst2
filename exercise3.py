@@ -89,7 +89,7 @@ def intersection(table1, table2):
             raise MismatchedAttributesException
 
     if len(table3) == 1:
-        table3 = None
+        table3 = []
     return table3
 
 
