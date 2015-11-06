@@ -77,9 +77,9 @@ def intersection(table1, table2):
     Describe your function
 
     """
-    table3 = [table1[0]]
-    i = 1
-    j = 1
+    table3 = []
+    i = 0
+    j = 0
 
     if schema(table1,table2):
         while i < len(table1):
@@ -89,9 +89,10 @@ def intersection(table1, table2):
                     j += 1
                 else:
                     j += 1
-            j = 1
+            j = 0
             i += 1
-
+    if len(table3) == 1:
+        table3 = None
     return table3
 
 GRADUATES = [["Number", "Surname", "Age"],
@@ -106,12 +107,28 @@ MANAGERS = [["Number", "Surname", "Age"],
 print intersection(GRADUATES, MANAGERS)
 
 
-def difference(table1, table2):
-    """
-    Describe your function
-
-    """
-    return []
+# def difference(table1, table2):
+#     """
+#     Describe your function
+#
+#     """
+#     table3 = table1
+#     i = 1
+#     j = 1
+#
+#     if schema(table1,table2):
+#         while i < len(table1):
+#             while j < len(table2):
+#                 if table1[i] == table2[j]:
+#                     table3.del(table1[i])
+#                     j += 1
+#                 else:
+#                     j += 1
+#             j = 1
+#             i += 1
+#     if len(table3) == 1:
+#         table3 = None
+#     return table3
 
 
 #####################
