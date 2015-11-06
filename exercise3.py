@@ -101,7 +101,7 @@ def difference(table1, table2):
     table3 = [table1[0]]
     i = 1
 
-    if schema(table1,table2):
+    if schema(table1, table2):
         try:
             while i < len(table1):
                 if table1[i] not in table2:
@@ -109,10 +109,11 @@ def difference(table1, table2):
                     i += 1
                 else:
                     i += 1
-        except Exception:
+        except AttributeError:
             raise MismatchedAttributesException
+
     if len(table3) == 1:
-        table3 = None
+        table3 = []
     return table3
 
 GRADUATES = [["Number", "Surname", "Age"],
@@ -129,6 +130,8 @@ print difference(GRADUATES, MANAGERS)
 #####################
 # HELPER FUNCTIONS ##
 #####################
+
+
 def remove_duplicates(l):
     """
     Removes duplicates from l, where l is a List of Lists.
