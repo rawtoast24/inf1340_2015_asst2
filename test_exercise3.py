@@ -13,7 +13,7 @@ __license__ = "MIT License"
 
 import pytest
 import mock
-from exercise3 import schema, union, intersection, difference
+from exercise3 import union, intersection, difference
 
 
 ###########

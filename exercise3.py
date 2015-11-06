@@ -13,32 +13,12 @@ __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
 
-def schema(table1, table2):
+class MismatchedAttributesException(Exception):
     """
-    Created a function to determine first whether the schemas for table 1 and table 2 were the same. It compares
-    the length of the first row of both tables and the content of the first row of both tables. Made variables false
-     until proven otherwise.
+    Raised when attempting set operations with tables that
+    don't have the same attributes.
     """
-
-    table_header_1 = table1[0]
-    table_header_2 = table2[0]
-    result_1 = False
-    result_2 = False
-    schema_result = False
-
-    length_1 = len(table_header_1)
-    length_2 = len(table_header_2)
-
-    if length_1 == length_2:
-        result_1 = True
-
-    if table_header_1 == table_header_2:
-        result_2 = True
-
-    if result_1 and result_2:
-        schema_result = True
-
-    return schema_result
+    pass
 
 
 def union(table1, table2):
@@ -97,30 +77,46 @@ def difference(table1, table2):
     Describe your function
 
     """
-    table3 = [table1[0]]
-    i = 1
+    if table1[0] != table2[0]:
+        return MismatchedAttributesException
+    else:
+        table3 = [table1[0]]
+        i = 1
+        while i < len(table1):
+            if table1[i] not in table2:
+                table3.append(table1[i])
+                i += 1
+            else:
+                i += 1
+        if len(table3) == 1:
+            table3 = None
+        return table3
 
-    if schema(table1, table2):
-        try:
-            while i < len(table1):
-                if table1[i] not in table2:
-                    table3.append(table1[i])
-                    i += 1
-                else:
-                    i += 1
-        except AttributeError:
-            raise MismatchedAttributesException
+    # if table1[0] == table2[0]:
+    #     try:
+    #         table3 = [table1[0]]
+    #         i = 1
+    #         while i < len(table1):
+    #             if table1[i] not in table2:
+    #                 table3.append(table1[i])
+    #                 i += 1
+    #             else:
+    #                 i += 1
+    #         if len(table3) == 1:
+    #             table3 = None
+    #         return table3
+    #     except Exception:
+    #         return MismatchedAttributesException
+    # # else:
+    # #     return Exception(MismatchedAttributesException)
 
-    if len(table3) == 1:
-        table3 = []
-    return table3
 
 GRADUATES = [["Number", "Surname", "Age"],
              [7274, "Robinson", 37],
              [7432, "O'Malley", 39],
              [9824, "Darkes", 38]]
 
-MANAGERS = [["Number", "Phone", "Age"],
+MANAGERS = [["Number", "Name", "Age"],
             [9297, "O'Malley", 56],
             [7432, "O'Malley", 39],
             [9824, "Darkes", 38]]
@@ -145,11 +141,3 @@ def remove_duplicates(l):
             d[tuple(row)] = True
 
     return result
-
-
-class MismatchedAttributesException(Exception):
-    """
-    Raised when attempting set operations with tables that
-    don't have the same attributes.
-    """
-    pass
