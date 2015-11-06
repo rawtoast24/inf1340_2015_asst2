@@ -45,7 +45,7 @@ def schema(table1, table2):
 # schema(test1, test2)
 
 
-def union(table1 , table2):
+def union(table1, table2):
     """
     Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
     established to represent the unique rows that appear in either table 1 and table 2.
@@ -58,7 +58,7 @@ def union(table1 , table2):
     """
     table3 = table1
     j = 1
-    if schema(table1 , table2):
+    if schema(table1, table2):
         try:
             while j < len(table2):
                 if table2[j] not in table1:
@@ -72,6 +72,7 @@ def union(table1 , table2):
 # test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
 # print union(test1, test2)
 
+
 def intersection(table1, table2):
     """
     Describe your function
@@ -81,7 +82,7 @@ def intersection(table1, table2):
     i = 0
     j = 0
 
-    if schema(table1 ,table2):
+    if schema(table1, table2):
         try:
             while i < len(table1):
                 while j < len(table2):
@@ -160,4 +161,3 @@ class MismatchedAttributesException(Exception):
     don't have the same attributes.
     """
     pass
-
