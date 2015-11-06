@@ -11,7 +11,9 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
-from exercise3 import schema, union, intersection, difference
+import pytest
+import mock
+from exercise3 import schema, union, intersection
 
 
 ###########
@@ -32,7 +34,7 @@ MANAGERS = [["Number", "Surname", "Age"],
 # HELPER FUNCTIONS ##
 #####################
 def is_equal(t1, t2):
-    return set(map(tuple, t1)) == set(map(tuple, t2))
+    return t1.sort() == t2.sort()
 
 
 ###################

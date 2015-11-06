@@ -35,17 +35,17 @@ def schema(table1, table2):
     if table_header_1 == table_header_2:
         result_2 = True
 
-    if result_1 == True and result_2 == True:
+    if result_1 and result_2:
         schema_result = True
 
     return schema_result
 
 # test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"]]
 # test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-#schema(test1, test2)
+# schema(test1, test2)
 
 
-def union(table1, table2):
+def union(table1 , table2):
     """
     Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
     established to represent the unique rows that appear in either table 1 and table 2.
@@ -58,19 +58,19 @@ def union(table1, table2):
     """
     table3 = table1
     j = 1
-    if schema(table1,table2):
-        while j < len(table2):
-            if table2[j] not in table1:
-                table3.append(table2[j])
-            j += 1
-
+    if schema(table1 , table2):
+        try:
+            while j < len(table2):
+                if table2[j] not in table1:
+                    table3.append(table2[j])
+                j += 1
+        except AttributeError:
+            raise MismatchedAttributesException
     return table3
 
 # test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
 # test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
 # print union(test1, test2)
-
-
 
 def intersection(table1, table2):
     """
@@ -81,16 +81,20 @@ def intersection(table1, table2):
     i = 0
     j = 0
 
-    if schema(table1,table2):
-        while i < len(table1):
-            while j < len(table2):
-                if table1[i] == table2[j]:
-                    table3.append(table2[j])
-                    j += 1
-                else:
-                    j += 1
-            j = 0
-            i += 1
+    if schema(table1 ,table2):
+        try:
+            while i < len(table1):
+                while j < len(table2):
+                    if table1[i] == table2[j]:
+                        table3.append(table2[j])
+                        j += 1
+                    else:
+                        j += 1
+                j = 0
+                i += 1
+        except AttributeError:
+            raise MismatchedAttributesException
+
     if len(table3) == 1:
         table3 = None
     return table3
