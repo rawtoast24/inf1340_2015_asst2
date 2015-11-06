@@ -14,11 +14,13 @@ __license__ = "MIT License"
 
 def find(input_string, substring, start, end):
     """
-    Takes in a string, a substring, and two integers as the start and end points of the first string.
-    The function will search letter by letter to see if the substring exists within the start and end points of the
-    string.
-    If there is a match, the function returns the starting index of the string as an integer. If not, it returns -1
-
+    Established find function to identify the starting index value of the first instance where a substring appears in
+    an input_string
+    :param input_string: string
+    :param substring: string
+    :param start: integer
+    :param end: integer
+    :return: result: integer
     """
     # Convert the string and substring into lowercase
     input_string = input_string.lower()
@@ -39,15 +41,14 @@ def find(input_string, substring, start, end):
 
 def multi_find(input_string, substring, start, end):
     """
-    Takes in a string, a substring, and two integers as the start and end points of the input string.
-    The function will search letter by letter to see if the substring exists within the start and end points of the
-    string.
-    The function adds the starting index of each appearance of the substring to a string variable result. If the
-    substring does not appear in the input string, result remains empty.
-    The function returns the variable result.
-
+    Established multi_find function to identify the starting index value of each instance that a substring appears in
+    an input_string
+    :param input_string: string
+    :param substring: string
+    :param start: integer
+    :param end: integer
+    :return: result: string of all the starting indices where substring is found in input_string
     """
-    # Create initial variables and convert strings to lowercase
     result = ""
     input_string = input_string.lower()
     substring = substring.lower()

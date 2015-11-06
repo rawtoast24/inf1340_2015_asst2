@@ -11,46 +11,6 @@ __author__ = 'Susan Sim'
 __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
-#
-GRADUATES = [["Number", "Surname", "Age"],
-             [7274, "Robinson", 37],
-             [7432, "O'Malley", 39],
-             [9824, "Darkes", 38]]
-
-# #Same as Graduates
-# # MANAGERS = [["Number", "Surname", "Age"],
-# #              [7274, "Robinson", 37],
-# #              [7432, "O'Malley", 39],
-# #              [9824, "Darkes", 38]]
-#
-# # Original
-# # MANAGERS = [["Number", "Surname", "Age"],
-# #             [9297, "O'Malley", 56],
-# #             [7432, "O'Malley", 39],
-# #             [9824, "Darkes", 38]]
-#
-# # Totally different
-# MANAGERS = [["Number", "Surname", "Age"],
-#              [7214, "Robinson", 37],
-#              [7412, "O'Malley", 39],
-#              [9814, "Darkes", 38]]
-
-# Bad Schema
-# MANAGERS = [["Number","Surname","Age", "Phone"],
-#             [7274, "Robinson", 37, 555-5553],
-#             [7432, "O'Malley", 39, 555-5554],
-#             [9824, "Darkes"]]
-
-# ACTORS = [["Number", "Surname", "Age"],
-#           [5400, "Bernard", 40],
-#           [7302, "Markham", 34],
-#           [8776, "Shingle", 52]]
-
-BEATLES = [["Name", "Instrument"],
-           ["John", "Guitar"],
-           ["Paul", "Bass"],
-           ["George", "Guitar"],
-           ["Ringo", "Drums"]]
 
 
 class MismatchedAttributesException(Exception):
@@ -91,8 +51,6 @@ def intersection(table1, table2):
     if len(table3) == 1:
         table3 = []
     return table3
-
-# print intersection(GRADUATES, BEATLES)
 
 
 def union(table1, table2):
