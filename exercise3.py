@@ -12,11 +12,11 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 #
-# GRADUATES = [["Number", "Surname", "Age"],
-#              [7274, "Robinson", 37],
-#              [7432, "O'Malley", 39],
-#              [9824, "Darkes", 38]]
-#
+GRADUATES = [["Number", "Surname", "Age"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
+
 # #Same as Graduates
 # # MANAGERS = [["Number", "Surname", "Age"],
 # #              [7274, "Robinson", 37],
@@ -35,6 +35,16 @@ __license__ = "MIT License"
 #              [7412, "O'Malley", 39],
 #              [9814, "Darkes", 38]]
 
+# Bad Schema
+# MANAGERS = [["Number","Surname","Age", "Phone"],
+#             [7274, "Robinson", 37, 555-5553],
+#             [7432, "O'Malley", 39, 555-5554],
+#             [9824, "Darkes"]]
+
+ACTORS = [["Number", "Surname", "Age"],
+          [5400, "Bernard", 40],
+          [7302, "Markham", 34],
+          [8776, "Shingle", 52]]
 
 class MismatchedAttributesException(Exception):
     """
@@ -59,7 +69,7 @@ def intersection(table1, table2):
     i = 0
     j = 0
     if table1[0] != table2[0]:
-        return MismatchedAttributesException
+        raise MismatchedAttributesException
     else:
         while i < len(table1):
             while j < len(table2):
@@ -72,10 +82,10 @@ def intersection(table1, table2):
             i += 1
 
     if len(table3) == 1:
-        table3 = None
+        table3 = []
     return table3
 
-
+print intersection(GRADUATES,ACTORS)
 def union(table1, table2):
     """
     Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
@@ -125,7 +135,7 @@ def difference(table1, table2):
             else:
                 i += 1
         if len(table3) == 1:
-            table3 = None
+            table3 = []
         return table3
 
 
