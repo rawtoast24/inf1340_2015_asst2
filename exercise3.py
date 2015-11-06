@@ -12,6 +12,26 @@ __email__ = "ses@drsusansim.org"
 __copyright__ = "2015 Susan Sim"
 __license__ = "MIT License"
 
+GRADUATES = [["Number", "Surname", "Age"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
+
+# MANAGERS = [["Number", "Surname", "Age"],
+#              [7274, "Robinson", 37],
+#              [7432, "O'Malley", 39],
+#              [9824, "Darkes", 38]]
+
+MANAGERS = [["Number", "Surname", "Age"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
+
+# MANAGERS = [["Number", "Surname", "Age"],
+#              [7214, "Robinson", 37],
+#              [7412, "O'Malley", 39],
+#              [9814, "Darkes", 38]]
+
 
 class MismatchedAttributesException(Exception):
     """
@@ -21,34 +41,16 @@ class MismatchedAttributesException(Exception):
     pass
 
 
-def union(table1, table2):
+def intersection(table1, table2):
     """
-    Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
-    established to represent the unique rows that appear in either table 1 and table 2.
+    Established intersection function to perform the intersection set operation on tables 1 and 2. Table 3 variable is
+    established to represent the unique rows that appear in both table 1 and table 2.
 
     :param table1: a table (a List of Lists)
     :param table2: a table (a List of Lists)
-    :return: the resulting table
+    :return: table3: a table with the header from table1/table2 and unique rows that appear in both tables
     :raises: MismatchedAttributesException:
-        if tables t1 and t2 don't have the same attributes
-    """
-    j = 1
-    if table1[0] != table2[0]:
-        return MismatchedAttributesException
-    else:
-        table3 = table1
-        while j < len(table2):
-            if table2[j] not in table1:
-                table3.append(table2[j])
-                j += 1
-            j += 1
-        return table3
-
-
-def intersection(table1, table2):
-    """
-    Describe your function
-
+        if tables table1 and table2 don't have the same attributes
     """
     table3 = []
     i = 0
@@ -67,15 +69,50 @@ def intersection(table1, table2):
             i += 1
 
     if len(table3) == 1:
-        table3 = []
+        table3 = None
     return table3
+
+print "Intersection ", intersection(GRADUATES, MANAGERS)
+
+
+def union(table1, table2):
+    """
+    Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
+    established to represent the unique rows that appear in either table 1 and table 2.
+
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: table3: table1 with unique rows from table2 appended in
+    :raises: MismatchedAttributesException:
+        if tables table1 and table2 don't have the same attributes
+    """
+    j = 1
+    if table1[0] != table2[0]:
+        return MismatchedAttributesException
+    else:
+        table3 = table1
+        while j < len(table2):
+            if table2[j] not in table1:
+                table3.append(table2[j])
+                j += 1
+            j += 1
+        return table3
+
+print "Union ", union(GRADUATES, MANAGERS)
 
 
 def difference(table1, table2):
     """
-    Describe your function
+    Established intersection function to perform the intersection set operation on tables 1 and 2. Table 3 variable is
+    established to represent the unique rows that appear in both table 1 and table 2.
 
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: table3: a table with the header from table1/table2 and unique rows from table1 that don't appear in table2
+    :raises: MismatchedAttributesException:
+        if tables table1 and table2 don't have the same attributes
     """
+
     if table1[0] != table2[0]:
         return MismatchedAttributesException
     else:
@@ -91,35 +128,7 @@ def difference(table1, table2):
             table3 = None
         return table3
 
-    # if table1[0] == table2[0]:
-    #     try:
-    #         table3 = [table1[0]]
-    #         i = 1
-    #         while i < len(table1):
-    #             if table1[i] not in table2:
-    #                 table3.append(table1[i])
-    #                 i += 1
-    #             else:
-    #                 i += 1
-    #         if len(table3) == 1:
-    #             table3 = None
-    #         return table3
-    #     except Exception:
-    #         return MismatchedAttributesException
-    # # else:
-    # #     return Exception(MismatchedAttributesException)
-
-
-GRADUATES = [["Number", "Surname", "Age"],
-             [7274, "Robinson", 37],
-             [7432, "O'Malley", 39],
-             [9824, "Darkes", 38]]
-
-MANAGERS = [["Number", "Name", "Age"],
-            [9297, "O'Malley", 56],
-            [7432, "O'Malley", 39],
-            [9824, "Darkes", 38]]
-print intersection(GRADUATES, MANAGERS)
+print "Difference ", difference(GRADUATES, MANAGERS)
 
 #####################
 # HELPER FUNCTIONS ##
