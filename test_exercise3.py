@@ -77,7 +77,7 @@ def test_intersection():
 
     assert is_equal(result, intersection(GRADUATES, ALUMNI))
 
-    result = None
+    result = []
 
     assert is_equal(result, intersection(GRADUATES, ACTORS))
 
@@ -126,7 +126,7 @@ def test_difference():
 
     assert is_equal(result, difference(GRADUATES, MANAGERS))
 
-    result = None
+    result = []
 
     assert is_equal(result, difference(GRADUATES, ALUMNI))
 
