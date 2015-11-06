@@ -34,12 +34,24 @@ MANAGERS = [["Number", "Surname", "Age"],
 # HELPER FUNCTIONS ##
 #####################
 def is_equal(t1, t2):
-    return t1.sort() == t2.sort()
+    return sorted(t1) == sorted(t2)
 
 
 ###################
 # TEST FUNCTIONS ##
 ###################
+def test_intersection():
+    """
+    Test intersection operation. If both tables are the same, function should return a new table
+     that contains all the unique rows that appear in both tables.
+    """
+    result = [["Number", "Surname", "Age"],
+              [7432, "O'Malley", 39],
+              [9824, "Darkes", 38]]
+
+    assert is_equal(result, intersection(GRADUATES, MANAGERS))
+
+
 def test_union():
     """
     Test union operation. If both tables have the same schema the function will return a new table that contains all
@@ -53,18 +65,6 @@ def test_union():
               [9824, "Darkes", 38]]
 
     assert is_equal(result, union(GRADUATES, MANAGERS))
-
-
-def test_intersection():
-    """
-    Test intersection operation. If both tables are the same, function should return a new table
-     that contains all the unique rows that appear in both tables.
-    """
-    result = [["Number", "Surname", "Age"],
-              [7432, "O'Malley", 39],
-              [9824, "Darkes", 38]]
-
-    assert is_equal(result, intersection(GRADUATES, MANAGERS))
 
 
 def test_difference():
