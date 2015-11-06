@@ -32,16 +32,17 @@ def union(table1, table2):
     :raises: MismatchedAttributesException:
         if tables t1 and t2 don't have the same attributes
     """
-    table3 = []
     j = 1
-    if table1[0] == table2[0]:
+    if table1[0] != table2[0]:
+        return MismatchedAttributesException
+    else:
         table3 = table1
         while j < len(table2):
             if table2[j] not in table1:
                 table3.append(table2[j])
                 j += 1
             j += 1
-    return table3
+        return table3
 
 
 def intersection(table1, table2):
@@ -52,20 +53,18 @@ def intersection(table1, table2):
     table3 = []
     i = 0
     j = 0
-
-    if table1[0] == table2[0]:
-        try:
-            while i < len(table1):
-                while j < len(table2):
-                    if table1[i] == table2[j]:
-                        table3.append(table2[j])
-                        j += 1
-                    else:
-                        j += 1
-                j = 0
-                i += 1
-        except AttributeError:
-            raise MismatchedAttributesException
+    if table1[0] != table2[0]:
+        return MismatchedAttributesException
+    else:
+        while i < len(table1):
+            while j < len(table2):
+                if table1[i] == table2[j]:
+                    table3.append(table2[j])
+                    j += 1
+                else:
+                    j += 1
+            j = 0
+            i += 1
 
     if len(table3) == 1:
         table3 = []
@@ -120,7 +119,7 @@ MANAGERS = [["Number", "Name", "Age"],
             [9297, "O'Malley", 56],
             [7432, "O'Malley", 39],
             [9824, "Darkes", 38]]
-print difference(GRADUATES, MANAGERS)
+print intersection(GRADUATES, MANAGERS)
 
 #####################
 # HELPER FUNCTIONS ##
