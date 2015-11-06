@@ -13,7 +13,7 @@ __license__ = "MIT License"
 
 import pytest
 import mock
-from exercise3 import schema, union, intersection
+from exercise3 import schema, union, intersection, difference
 
 
 ###########
@@ -67,13 +67,13 @@ def test_intersection():
     assert is_equal(result, intersection(GRADUATES, MANAGERS))
 
 
-# def test_difference():
-#     """
-#     Test difference operation. After its been determined that the schema of both tables is the same the
-#     function will return a new table that holds all unique rows that appear in the first table but not the second.
-#     """
-#
-#     result = [["Number", "Surname", "Age"],
-#               [7274, "Robinson", 37]]
-#
-#     assert is_equal(result, difference(GRADUATES, MANAGERS))
+def test_difference():
+    """
+    Test difference operation. After its been determined that the schema of both tables is the same the
+    function will return a new table that holds all unique rows that appear in the first table but not the second.
+    """
+
+    result = [["Number", "Surname", "Age"],
+              [7274, "Robinson", 37]]
+
+    assert is_equal(result, difference(GRADUATES, MANAGERS))

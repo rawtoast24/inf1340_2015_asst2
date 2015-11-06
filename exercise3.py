@@ -40,10 +40,6 @@ def schema(table1, table2):
 
     return schema_result
 
-# test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"]]
-# test2 = [["Name","Age","School"],["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-# schema(test1, test2)
-
 
 def union(table1, table2):
     """
@@ -67,10 +63,6 @@ def union(table1, table2):
         except AttributeError:
             raise MismatchedAttributesException
     return table3
-
-# test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
-# test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-# print union(test1, test2)
 
 
 def intersection(table1, table2):
@@ -100,6 +92,29 @@ def intersection(table1, table2):
         table3 = None
     return table3
 
+
+def difference(table1, table2):
+    """
+    Describe your function
+
+    """
+    table3 = [table1[0]]
+    i = 1
+
+    if schema(table1,table2):
+        try:
+            while i < len(table1):
+                if table1[i] not in table2:
+                    table3.append(table1[i])
+                    i += 1
+                else:
+                    i += 1
+        except Exception:
+            raise MismatchedAttributesException
+    if len(table3) == 1:
+        table3 = None
+    return table3
+
 GRADUATES = [["Number", "Surname", "Age"],
              [7274, "Robinson", 37],
              [7432, "O'Malley", 39],
@@ -109,32 +124,7 @@ MANAGERS = [["Number", "Surname", "Age"],
             [9297, "O'Malley", 56],
             [7432, "O'Malley", 39],
             [9824, "Darkes", 38]]
-print intersection(GRADUATES, MANAGERS)
-
-
-# def difference(table1, table2):
-#     """
-#     Describe your function
-#
-#     """
-#     table3 = table1
-#     i = 1
-#     j = 1
-#
-#     if schema(table1,table2):
-#         while i < len(table1):
-#             while j < len(table2):
-#                 if table1[i] == table2[j]:
-#                     table3.del(table1[i])
-#                     j += 1
-#                 else:
-#                     j += 1
-#             j = 1
-#             i += 1
-#     if len(table3) == 1:
-#         table3 = None
-#     return table3
-
+print difference(GRADUATES, MANAGERS)
 
 #####################
 # HELPER FUNCTIONS ##
