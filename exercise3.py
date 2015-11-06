@@ -22,15 +22,16 @@ GRADUATES = [["Number", "Surname", "Age"],
 #              [7432, "O'Malley", 39],
 #              [9824, "Darkes", 38]]
 
-MANAGERS = [["Number", "Surname", "Age"],
-            [9297, "O'Malley", 56],
-            [7432, "O'Malley", 39],
-            [9824, "Darkes", 38]]
-
 # MANAGERS = [["Number", "Surname", "Age"],
-#              [7214, "Robinson", 37],
-#              [7412, "O'Malley", 39],
-#              [9814, "Darkes", 38]]
+#             [9297, "O'Malley", 56],
+#             [7432, "O'Malley", 39],
+#             [9824, "Darkes", 38]]
+
+# Totally different
+MANAGERS = [["Number", "Surname", "Age"],
+             [7214, "Robinson", 37],
+             [7412, "O'Malley", 39],
+             [9814, "Darkes", 38]]
 
 
 class MismatchedAttributesException(Exception):
@@ -86,15 +87,16 @@ def union(table1, table2):
     :raises: MismatchedAttributesException:
         if tables table1 and table2 don't have the same attributes
     """
+    table3 = []
     j = 1
     if table1[0] != table2[0]:
         return MismatchedAttributesException
     else:
-        table3 = table1
+        for i in range(0,len(table1)):
+            table3.append(table1[i])
         while j < len(table2):
             if table2[j] not in table1:
                 table3.append(table2[j])
-                j += 1
             j += 1
         return table3
 
