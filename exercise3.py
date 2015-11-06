@@ -66,9 +66,9 @@ def union(table1, table2):
 
     return table3
 
-test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
-test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-print union(test1, test2)
+# test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
+# test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
+# print union(test1, test2)
 
 
 
@@ -85,17 +85,25 @@ def intersection(table1, table2):
         while i < len(table1):
             while j < len(table2):
                 if table1[i] == table2[j]:
-                    table3 = table3 + table2[j]
+                    table3.append(table2[j])
                     j += 1
                 else:
                     j += 1
+            j = 1
             i += 1
 
     return table3
 
-#test1 = [["Name","Age","School"],["Robinson",12,"UTS"],["Alice",14,"Bayview Glen"], ["Shauna",20,"Mentor College"]]
-#test2 = [["Name","Age","School"],["Robinson",12,"UTS"], ["James",13,"Hillfield"],["Shauna",20,"Mentor College"]]
-#print intersection(test1, test2)
+GRADUATES = [["Number", "Surname", "Age"],
+             [7274, "Robinson", 37],
+             [7432, "O'Malley", 39],
+             [9824, "Darkes", 38]]
+
+MANAGERS = [["Number", "Surname", "Age"],
+            [9297, "O'Malley", 56],
+            [7432, "O'Malley", 39],
+            [9824, "Darkes", 38]]
+print intersection(GRADUATES, MANAGERS)
 
 
 def difference(table1, table2):
