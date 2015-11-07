@@ -21,6 +21,31 @@ class MismatchedAttributesException(Exception):
     pass
 
 
+def union(table1, table2):
+    """
+    Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
+    established to represent the unique rows that appear in either table 1 and table 2.
+
+    :param table1: a table (a List of Lists)
+    :param table2: a table (a List of Lists)
+    :return: table3: table1 with unique rows from table2 appended in
+    :raises: MismatchedAttributesException:
+        if tables table1 and table2 don't have the same attributes
+    """
+    table3 = []
+    j = 1
+    if table1[0] != table2[0]:
+        raise Exception("MismatchedAttributesException")
+    else:
+        for i in range(0, len(table1)):
+            table3.append(table1[i])
+        while j < len(table2):
+            if table2[j] not in table1:
+                table3.append(table2[j])
+            j += 1
+        return table3
+
+
 def intersection(table1, table2):
     """
     Established intersection function to perform the intersection set operation on tables 1 and 2. Table 3 variable is
@@ -49,33 +74,8 @@ def intersection(table1, table2):
             i += 1
 
     if len(table3) == 1:
-        table3 = []
+        table3 = None
     return table3
-
-
-def union(table1, table2):
-    """
-    Established union function to perform the union set operation on tables 1 and 2. Table 3 variable is
-    established to represent the unique rows that appear in either table 1 and table 2.
-
-    :param table1: a table (a List of Lists)
-    :param table2: a table (a List of Lists)
-    :return: table3: table1 with unique rows from table2 appended in
-    :raises: MismatchedAttributesException:
-        if tables table1 and table2 don't have the same attributes
-    """
-    table3 = []
-    j = 1
-    if table1[0] != table2[0]:
-        raise Exception("MismatchedAttributesException")
-    else:
-        for i in range(0, len(table1)):
-            table3.append(table1[i])
-        while j < len(table2):
-            if table2[j] not in table1:
-                table3.append(table2[j])
-            j += 1
-        return table3
 
 
 def difference(table1, table2):
@@ -102,7 +102,7 @@ def difference(table1, table2):
             else:
                 i += 1
         if len(table3) == 1:
-            table3 = []
+            table3 = None
         return table3
 
 

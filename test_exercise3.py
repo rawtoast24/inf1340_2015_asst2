@@ -59,6 +59,39 @@ def is_equal(t1, t2):
 ###################
 
 
+def test_union():
+    """
+    Test union operation. If both tables have the same schema the function will return a new table that contains all
+    unique rows that appear in either table. Tested three comparisons, one where two tables were semi-similar, one where
+    they were the same and one where they were completely different.
+    """
+
+    result = [["Number", "Surname", "Age"],
+              [7274, "Robinson", 37],
+              [9297, "O'Malley", 56],
+              [7432, "O'Malley", 39],
+              [9824, "Darkes", 38]]
+
+    assert is_equal(result, union(GRADUATES, MANAGERS))
+
+    result = [["Number", "Surname", "Age"],
+              [7274, "Robinson", 37],
+              [7432, "O'Malley", 39],
+              [9824, "Darkes", 38]]
+
+    assert is_equal(result, union(GRADUATES, ALUMNI))
+
+    result = [["Number", "Surname", "Age"],
+              [7274, "Robinson", 37],
+              [7432, "O'Malley", 39],
+              [9824, "Darkes", 38],
+              [5400, "Bernard", 40],
+              [7302, "Markham", 34],
+              [8776, "Shingle", 52]]
+
+    assert is_equal(result, union(GRADUATES, ACTORS))
+
+
 def test_intersection():
     """
     Test intersection operation. If both tables are the same, function should return a new table
@@ -77,42 +110,7 @@ def test_intersection():
 
     assert is_equal(result, intersection(GRADUATES, ALUMNI))
 
-    result = []
-
-    assert is_equal(result, intersection(GRADUATES, ACTORS))
-
-
-def test_union():
-    """
-    Test union operation. If both tables have the same schema the function will return a new table that contains all
-    unique rows that appear in either table. Tested three comparisons, one where two tables were semi-similar, one where
-    they were the same and one where they were completely different.
-    """
-
-    # result = [["Number", "Surname", "Age"],
-    #           [7274, "Robinson", 37],
-    #           [9297, "O'Malley", 56],
-    #           [7432, "O'Malley", 39],
-    #           [9824, "Darkes", 38]]
-    #
-    # assert is_equal(result, union(GRADUATES, MANAGERS))
-
-    result = [["Number", "Surname", "Age"],
-              [7274, "Robinson", 37],
-              [7432, "O'Malley", 39],
-              [9824, "Darkes", 38]]
-
-    assert is_equal(result, union(GRADUATES, ALUMNI))
-
-    # result = [["Number", "Surname", "Age"],
-    #           [7274, "Robinson", 37],
-    #           [7432, "O'Malley", 39],
-    #           [9824, "Darkes", 38],
-    #           [5400, "Bernard", 40],
-    #           [7302, "Markham", 34],
-    #           [8776, "Shingle", 52]]
-    #
-    # assert is_equal(result, union(GRADUATES, ACTORS))
+    assert intersection(GRADUATES, ACTORS) == None
 
 
 def test_difference():
@@ -126,9 +124,7 @@ def test_difference():
 
     assert is_equal(result, difference(GRADUATES, MANAGERS))
 
-    result = []
-
-    assert is_equal(result, difference(GRADUATES, ALUMNI))
+    assert difference(GRADUATES, ALUMNI) == None
 
     result = [["Number", "Surname", "Age"],
               [7274, "Robinson", 37],
